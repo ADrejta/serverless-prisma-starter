@@ -1,0 +1,7 @@
+hello:
+   handler: functions/hello/hello.helloExport
+   events:
+      - http:
+           path: index
+           method: get
+           cors: true

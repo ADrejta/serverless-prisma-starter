@@ -3,32 +3,31 @@ service: yourService
 
 # Create an optimized package for our functions
 package:
-   individually: true
+  individually: true
 
 plugins:
-   - serverless-bundle # Package our functions with Webpack
-   - serverless-offline
-   - serverless-plugin-split-stacks
+  - serverless-bundle # Package our functions with Webpack
+  - serverless-offline
+  - serverless-plugin-split-stacks
 
 provider:
-   name: aws
-   runtime: nodejs14.x
-   stage: prod
-   region: eu-central-1
-   memorySize: 2048
-   timeout: 30
+  name: aws
+  runtime: nodejs14.x
+  stage: prod
+  region: eu-central-1
+  memorySize: 2048
+  timeout: 30
 
 functions:
   hello: ${file(functions/hello/hello.yml):hello}
   hello2: ${file(functions/hello2/hello2.yml):hello}
 
 custom:
-   bundle:
-      externals:
-         - "@prisma/client"
-      copyFiles:
-         - from: "prisma/schema.prisma"
-           to: "./"
-      packagerOptions:
-         scripts:
-            - prisma generate
+  bundle:
+    externals: all
+    copyFiles:
+      - from: 'prisma/schema.prisma'
+        to: './'
+    packagerOptions:
+      scripts:
+        - prisma generate

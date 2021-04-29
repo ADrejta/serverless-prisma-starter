@@ -1,7 +1,7 @@
 version: '3'
 services:
   database:
-    image: "postgres" # use latest official postgres version
+    image: 'postgres' # use latest official postgres version
     ports:
       - 5432:5432
     env_file:

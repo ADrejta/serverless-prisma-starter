@@ -1,7 +1,9 @@
 hello:
-   handler: functions/hello2/hello2.helloExport
-   events:
-      - http:
-           path: index2
-           method: get
-           cors: true
+  handler:
+    - middlewares/isEvenAge.isEvenAge
+    - functions/hello2/hello2.helloExport
+  events:
+    - http:
+        path: index2
+        method: post
+        cors: true

@@ -6,6 +6,7 @@ package:
   individually: true
 
 plugins:
+  - serverless-middleware
   - serverless-bundle # Package our functions with Webpack
   - serverless-offline
   - serverless-plugin-split-stacks
@@ -23,6 +24,8 @@ functions:
   hello2: ${file(functions/hello2/hello2.yml):hello}
 
 custom:
+  splitStacks:
+    perFunction: true
   bundle:
     externals: all
     copyFiles:
@@ -31,3 +34,4 @@ custom:
     packagerOptions:
       scripts:
         - prisma generate
+        - rm -rf node_modules/.prisma/client/query-engine-debian-openssl-1.1.x

@@ -1,7 +1,9 @@
 hello:
-   handler: functions/hello/hello.helloExport
-   events:
-      - http:
-           path: index
-           method: get
-           cors: true
+  handler:
+    - middlewares/verifyToken.verify
+    - functions/hello/hello.helloExport
+  events:
+    - http:
+        path: index
+        method: post
+        cors: true

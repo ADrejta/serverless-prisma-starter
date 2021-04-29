@@ -7,7 +7,13 @@ export const helloExport = async (
   context: Context
 ): Promise<APIGatewayProxyResult> => {
   try {
-    await prisma.user.findMany();
+    console.log(
+      await prisma.user.findMany({
+        where: {
+          role: 'USER',
+        },
+      })
+    );
     return {
       statusCode: 200,
       body: JSON.stringify({
@@ -18,7 +24,7 @@ export const helloExport = async (
     return {
       statusCode: 500,
       body: JSON.stringify({
-        message: 'Something went wrong!! Please report this',
+        message: 'MAYDAYYY MAYDAYYY',
       }),
     };
   }

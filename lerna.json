@@ -1,6 +1,4 @@
 {
-  "packages": [
-    "functions/*"
-  ],
+  "packages": ["functions/*", "middlewares/*"],
   "version": "0.0.0"
 }
